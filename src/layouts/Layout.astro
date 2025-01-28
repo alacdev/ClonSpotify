@@ -1,12 +1,13 @@
 ---
-import AsideMenu from "../components/AsideMenu.astro"
-import { ViewTransitions } from "astro:transitions"
+import AsideMenu from "../components/AsideMenu.astro";
+import { ClientRouter } from "astro:transitions";
+import { Player } from "../components/Player";
 
 interface Props {
-  title: string
+  title: string;
 }
 
-const { title } = Astro.props
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,7 +19,7 @@ const { title } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions fallback="none" />
+    <ClientRouter fallback="none" />
   </head>
   <body>
     <div id="app" class="relative h-screen p-2 gap-2">
@@ -33,7 +34,7 @@ const { title } = Astro.props
       </main>
 
       <footer class="[grid-area:player] h-[80px]">
-        <!-- <Player client:load transition:name="media-player" transition:persist /> -->
+        <Player client:load transition:name="media-player" transition:persist />
       </footer>
     </div>
     <style>
